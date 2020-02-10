@@ -1,0 +1,11 @@
+.customTitle {
+  :global(.ant-page-header-heading-title) {
+    margin-left: 8px;
+  }
+}
+
+.rainbowText {
+  background-image: linear-gradient(to left, var(--primary-color), var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,12 +1,9 @@
 module.exports = {
   env: {
-    es6: true,
+    browser: true,
     node: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-  ],
+  extends: ['plugin:react/recommended', 'airbnb'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -18,9 +15,48 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
+  parser: 'babel-eslint',
+  plugins: ['react', 'module-resolver'],
   rules: {
+    'implicit-arrow-linebreak': 'off',
+    'function-paren-newline': 'off',
+    semi: 'off',
+    'no-shadow': 'off',
+    'no-undef': 'off',
+    'react/jsx-curly-brace-presence': 'off',
+    'react/no-danger': 'off',
+    'consistent-return': 'off',
+    'no-underscore-dangle': 'off',
+    'jsx-a11y/label-has-for': 'off',
+    'react/state-in-constructor': 'off',
+    'react/require-default-props': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/prefer-stateless-function': 'off',
+    'jsx-a11y/interactive-supports-focus': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'react/jsx-filename-extension': 'off',
+    'module-resolver/use-alias': 2,
+    'import/no-unresolved': [
+      2,
+      {
+        ignore: [
+          'components',
+          'containers',
+          'fields',
+          'stores',
+          'styles',
+          'utils',
+          'views',
+          'pages',
+          'routes',
+          'constants',
+        ],
+      },
+    ],
   },
-};
+  settings: {
+    'import/resolver': {
+      'babel-module': {},
+    },
+  },
+}
