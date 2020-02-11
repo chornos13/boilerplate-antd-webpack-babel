@@ -1,4 +1,4 @@
-import CreateRouter from 'utils/CreateRouter'
+import RegisterRoute from 'utils/RegisterRoute'
 import home from './home'
 import features from './features'
 import rules from './rules'
@@ -7,17 +7,17 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: CreateRouter(home),
+    component: RegisterRoute(home),
   },
   {
     path: '/features',
     name: 'Feature',
-    component: CreateRouter(features),
+    component: RegisterRoute(features),
   },
   {
     path: '/rules',
     name: 'Rules',
-    component: CreateRouter(rules),
+    component: RegisterRoute(rules),
   },
 ]
 

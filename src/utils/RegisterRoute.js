@@ -5,7 +5,7 @@ import MyLoadable from 'utils/MyLoadable'
 
 const NotFound = MyLoadable(() => import('views/pages/404'))
 
-function CreateRouter(routes) {
+function RegisterRoute(routes) {
   return function MyRouter() {
     return (
       <Switch>
@@ -31,4 +31,4 @@ function CreateRouter(routes) {
 //   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
 // }
 
-export default CreateRouter
+export default RegisterRoute
