@@ -31,7 +31,6 @@ module.exports = {
     'react/state-in-constructor': 'off',
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'react/prefer-stateless-function': 'off',
     'jsx-a11y/interactive-supports-focus': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'react/jsx-filename-extension': 'off',
