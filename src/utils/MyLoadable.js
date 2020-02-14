@@ -19,7 +19,7 @@ function BaseLazyHOCinRoute(HOC, Content) {
   }
 }
 
-export function useLazyHOCinRoute(...args) {
+export function lazyHOC(...args) {
   if (args.length < 2) {
     throw new Error('Min 2 arguments')
   }

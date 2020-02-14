@@ -1,7 +1,7 @@
 /* eslint-disable module-resolver/use-alias */
 import loadable from '@loadable/component'
 import CreateRoute from 'utils/CreateRoute'
-import { useLazyHOCinRoute } from 'utils/MyLoadable'
+import { lazyHOC } from 'utils/MyLoadable'
 import home from './home'
 import features from './features'
 import rules from './rules'
@@ -13,17 +13,17 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: useLazyHOCinRoute(withTest, withHeader, CreateRoute(home)),
+    component: lazyHOC(withTest, withHeader, CreateRoute(home)),
   },
   {
     path: '/features',
     name: 'Feature',
-    component: useLazyHOCinRoute(withHeader, CreateRoute(features)),
+    component: lazyHOC(withHeader, CreateRoute(features)),
   },
   {
     path: '/rules',
     name: 'Rules',
-    component: useLazyHOCinRoute(withHeader, CreateRoute(rules)),
+    component: lazyHOC(withHeader, CreateRoute(rules)),
   },
 ]
 
