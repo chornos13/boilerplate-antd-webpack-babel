@@ -1,12 +1,14 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-// import PropTypes from 'prop-types'
+import { Redirect, Route, Switch } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import MyLoadable from 'utils/MyLoadable'
+import { isFunction } from 'formik'
 
 const NotFound = MyLoadable(() => import('views/pages/404'))
 
 function CreateRoute(routes) {
-  return function MyRouter() {
+  function MyRouter(props) {
+    const { redirectTo } = props
     return (
       <Switch>
         {routes.map((route) => {
@@ -15,20 +17,32 @@ function CreateRoute(routes) {
             <Route
               key={route.path}
               {...propsRoute}
-              render={(props) => <PageComponent {...props} />}
+              render={(routeProps) => {
+                if (isFunction(PageComponent)) {
+                  return PageComponent()
+                }
+
+                return <PageComponent {...routeProps} {...props} />
+              }}
             />
           )
         })}
-        <Route path="*">
-          <NotFound />
-        </Route>
+        {redirectTo ? (
+          <Redirect to={redirectTo} />
+        ) : (
+          <Route path="*">
+            <NotFound />
+          </Route>
+        )}
       </Switch>
     )
   }
-}
 
-// MyRouter.propTypes = {
-//   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
-// }
+  MyRouter.propTypes = {
+    redirectTo: PropTypes.string,
+  }
+
+  return MyRouter
+}
 
 export default CreateRoute

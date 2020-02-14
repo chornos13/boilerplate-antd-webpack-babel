@@ -2,7 +2,7 @@ const path = require('path')
 const HWP = require('html-webpack-plugin')
 const CWP = require('copy-webpack-plugin')
 const webpack = require('webpack')
-const theme = require('./src/styles/theme')
+const theme = require('./src/configs/theme')
 
 module.exports = {
   devServer: {
