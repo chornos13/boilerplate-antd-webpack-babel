@@ -1,10 +1,10 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import MyLoadable from 'utils/MyLoadable'
+import { LoadComponent } from 'utils/MyLoadable'
 import { isFunction } from 'formik'
 
-const NotFound = MyLoadable(() => import('views/pages/404'))
+const NotFound = LoadComponent(() => import('views/pages/404'))
 
 function CreateRoute(routes) {
   function MyRouter(props) {

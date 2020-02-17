@@ -1,6 +1,6 @@
-import MyLoadable from 'utils/MyLoadable'
+import { LoadComponent } from 'utils/MyLoadable'
 
-const Rules = MyLoadable(() => import('views/Rules/Rules'))
+const Rules = LoadComponent(() => import('views/Rules/Rules'))
 
 const routes = [
   {

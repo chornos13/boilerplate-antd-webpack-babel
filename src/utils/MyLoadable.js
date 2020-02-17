@@ -4,38 +4,42 @@ import pMinDelay from 'p-min-delay'
 import { Spin } from 'antd'
 import '../App.css'
 
-function BaseLazyHOCinRoute(HOC, Content) {
-  return function LazyHOCinRoute(props) {
+const DELAY = 200
+
+function lazyHOC(Library, ...args) {
+  let HolderComponent = null
+  return function LazyHOC(props) {
     return (
-      <div>
-        <HOC>
-          {({ default: Module }) => {
-            const View = Module(Content)
-            return <View {...props} />
-          }}
-        </HOC>
-      </div>
+      <Library>
+        {({ default: Module }) => {
+          if (!HolderComponent) {
+            HolderComponent = Module(...args)
+            return <HolderComponent {...props} />
+          }
+          return <HolderComponent {...props} />
+        }}
+      </Library>
     )
   }
 }
+//
+// export function lazyHOC(...args) {
+//   if (args.length < 2) {
+//     throw new Error('Min 2 arguments')
+//   }
+//
+//   let View = args.pop()
+//   args.reverse()
+//
+//   for (let i = 0; i < args.length; i += 1) {
+//     View = lazyHOC(args[i], View)
+//   }
+//
+//   return View
+// }
 
-export function lazyHOC(...args) {
-  if (args.length < 2) {
-    throw new Error('Min 2 arguments')
-  }
-
-  let View = args.pop()
-  args.reverse()
-
-  for (let i = 0; i < args.length; i += 1) {
-    View = BaseLazyHOCinRoute(args[i], View)
-  }
-
-  return View
-}
-
-export default function ReactLoadable(fnImport) {
-  return Loadable(() => pMinDelay(fnImport(), 200), {
+export function LoadComponent(fnImport) {
+  return Loadable(() => pMinDelay(fnImport(), DELAY), {
     fallback: (
       <div className="loading">
         <Spin size="large" />
@@ -43,4 +47,9 @@ export default function ReactLoadable(fnImport) {
       </div>
     ),
   })
+}
+
+export function LoadHOC(fnImport) {
+  const Library = Loadable.lib(fnImport)
+  return (...args) => lazyHOC(Library, ...args)
 }

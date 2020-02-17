@@ -1,6 +1,6 @@
-import MyLoadable from 'utils/MyLoadable'
+import { LoadComponent } from 'utils/MyLoadable'
 
-const Features = MyLoadable(() => import('views/Features/Features'))
+const Features = LoadComponent(() => import('views/Features/Features'))
 
 const routes = [
   {

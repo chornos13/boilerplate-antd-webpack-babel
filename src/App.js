@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import './App.css'
-import MyLoadable from './utils/MyLoadable'
+import { LoadComponent } from './utils/MyLoadable'
 
-const DefaultLayout = MyLoadable(() => import('containers/DefaultLayout'))
+const DefaultLayout = LoadComponent(() => import('containers/DefaultLayout'))
 
 function App() {
   return (

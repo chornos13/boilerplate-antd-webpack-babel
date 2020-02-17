@@ -1,7 +1,7 @@
 import React from 'react'
 import routes from 'routes/default'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import Header from './layouts/Header'
+// import Header from './layouts/Header'
 // import cx from 'classnames'
 // import cssDefaultLayout from './DefaultLayout.module.css'
 // import Header from './layouts/Header'
