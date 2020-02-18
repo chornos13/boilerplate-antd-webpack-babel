@@ -45,18 +45,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-        loader: require.resolve('url-loader'),
-      },
-      {
         exclude: /node_modules/,
         test: /\.js$/,
         loader: 'babel-loader',
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-        exclude: /node_modules/,
-        use: ['file-loader?name=[name].[ext]'], // ?name=[name].[ext] is only necessary to preserve the original file name
       },
       {
         test: /\.css$/,
