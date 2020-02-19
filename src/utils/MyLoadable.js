@@ -4,7 +4,7 @@ import pMinDelay from 'p-min-delay'
 import { Spin } from 'antd'
 import '../App.css'
 
-const DELAY = 200
+const DELAY = 150
 
 function lazyHOC(Library, ...args) {
   let HolderComponent = null

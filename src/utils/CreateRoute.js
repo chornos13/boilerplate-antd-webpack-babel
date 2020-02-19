@@ -2,7 +2,6 @@ import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { LoadComponent } from 'utils/MyLoadable'
-import { isFunction } from 'formik'
 
 const NotFound = LoadComponent(() => import('views/pages/404'))
 
@@ -17,13 +16,9 @@ function CreateRoute(routes) {
             <Route
               key={route.path}
               {...propsRoute}
-              render={(routeProps) => {
-                if (isFunction(PageComponent)) {
-                  return PageComponent()
-                }
-
-                return <PageComponent {...routeProps} {...props} />
-              }}
+              render={(routeProps) => (
+                <PageComponent {...routeProps} {...props} />
+              )}
             />
           )
         })}

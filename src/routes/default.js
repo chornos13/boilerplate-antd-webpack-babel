@@ -1,11 +1,11 @@
 import CreateRoute from 'utils/CreateRoute'
 import { LoadHOC } from 'utils/MyLoadable'
-// import withHeader from 'components/HOC/withHeader'
 import home from './home'
 import features from './features'
 import rules from './rules'
+import about from './about'
 
-const withHeader = LoadHOC(() => import('components/HOC/withHeader'))
+const withHeader = LoadHOC(() => import('components/HOC/Layout/withHeader'))
 
 const routes = [
   {
@@ -22,6 +22,11 @@ const routes = [
     path: '/rules',
     name: 'Rules',
     component: withHeader(CreateRoute(rules)),
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: withHeader(CreateRoute(about)),
   },
 ]
 

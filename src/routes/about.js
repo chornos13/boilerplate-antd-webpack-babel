@@ -1,15 +1,15 @@
 import { LoadComponent } from 'utils/MyLoadable'
 import { addPrefixPathRoute } from 'utils/RouteHelpers'
 
-const BASE_URL = '/rules'
+const BASE_URL = '/about'
 
-const Rules = LoadComponent(() => import('views/Rules/Rules'))
+const About = LoadComponent(() => import('views/About/About'))
 
 const routes = [
   {
     path: '/',
-    name: 'Rules',
-    component: Rules,
+    name: 'About',
+    component: About,
   },
 ]
 
