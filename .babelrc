@@ -12,6 +12,7 @@
     [
       "module-resolver",
       {
+        "extensions": [".js", ".jsx", ".es", ".es6", ".mjs", ".scss"],
         "alias": {
           "components": "./src/components",
           "containers": "./src/containers",

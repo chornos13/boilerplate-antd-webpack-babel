@@ -3,7 +3,11 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:prettier/recommended',
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -16,8 +20,9 @@ module.exports = {
     sourceType: 'module',
   },
   parser: 'babel-eslint',
-  plugins: ['react', 'module-resolver'],
+  plugins: ['react', 'module-resolver', 'prettier'],
   rules: {
+    'prettier/prettier': 'error',
     'implicit-arrow-linebreak': 'off',
     'function-paren-newline': 'off',
     semi: 'off',
