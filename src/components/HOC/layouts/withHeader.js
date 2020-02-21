@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from 'containers/layouts/Header'
+import Header from 'components/layouts/Header'
 
 function withHeader(Content) {
   return function LayoutHeader(props) {

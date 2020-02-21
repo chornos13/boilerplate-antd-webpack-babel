@@ -1,0 +1,49 @@
+@import "../../styles/mixins";
+@import "../../styles/breakpoints";
+
+.sider {
+  padding-top: 64px;
+}
+
+.container {
+  height: 100%;
+}
+
+.content {
+  min-height: unset;
+  padding: 90px 16px 0;
+}
+
+.header {
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  padding-left: 200px;
+}
+
+.menuNavigation {
+  line-height: 64px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 25px;
+}
+
+.logo {
+  position: fixed;
+  width: 200px;
+  height: 64px;
+  float: left;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.textLogo {
+  white-space: nowrap;
+  color: var(--primary-color) !important;
+}

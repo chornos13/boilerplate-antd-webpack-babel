@@ -1,5 +1,6 @@
 import React from 'react'
 import { PageHeader, Tabs, Button } from 'antd'
+import { Link } from 'react-router-dom'
 import ReactRouterPropTypes from 'react-router-prop-types'
 import cx from 'classnames'
 import cssHeader from './Header.module.css'
@@ -28,44 +29,45 @@ export const EXTRA_BUTTONS = [
 export const TABS = [
   {
     name: 'Home',
-    url: '/home',
+    path: '/home',
   },
   {
     name: 'Rules',
-    url: '/rules',
+    path: '/rules',
   },
   {
     name: 'Features',
-    url: '/features',
+    path: '/features',
   },
   {
     name: 'About',
-    url: '/about',
+    path: '/about',
   },
 ]
 
 function Header(props) {
   const { history, location } = props
-  const curBaseURL = `/${location.pathname.split('/')[1]}`
-  const isNavExist = !!TABS.find((x) => x.url === curBaseURL)
+  const curTab = TABS.find((x) => location.pathname.startsWith(x.path))
 
   return (
     <div className={cx(cssHeader.customTitle)}>
       <PageHeader
-        style={{
-          border: '1px solid rgb(235, 237, 240)',
-        }}
-        title={<div className={cx(cssHeader.rainbowText)}>Nusa Front-End</div>}
+        className={cx(cssHeader.headerBorder)}
+        title={
+          <Link className={cx(cssHeader.rainbowText)} to={'/'}>
+            Nusa Front-End
+          </Link>
+        }
         extra={EXTRA_BUTTONS}
         footer={
           <Tabs
-            activeKey={isNavExist ? curBaseURL : 'random'}
+            activeKey={curTab && curTab.path}
             onChange={(key) => {
               history.push(key)
             }}
           >
             {TABS.map((tab) => {
-              return <TabPane tab={tab.name} key={tab.url} />
+              return <TabPane tab={tab.name} key={tab.path} />
             })}
           </Tabs>
         }

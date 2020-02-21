@@ -1,0 +1,36 @@
+// Mobile devices
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin widescreen {
+  @media (max-width: #{$widescreen}) {
+    @content;
+  }
+}
+
+@mixin fullhd {
+  @media (max-width: #{$fullhd}) {
+    @content;
+  }
+}
+
+@mixin customBreakpoint($screen) {
+  @media (max-width: $screen+'px') {
+    @content;
+  }
+}

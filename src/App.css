@@ -10,16 +10,8 @@
   --size-arrow: 35px;
   --antd-color-gray: #F4F4F4;
   --orange: #FF9901;
-
 }
 
-
-.loading {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  width: 100px;
-  padding: 20px 0;
+#root {
+  height:100%;
 }

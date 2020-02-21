@@ -4,6 +4,10 @@
   }
 }
 
+.headerBorder {
+  border: 1px solid rgb(235, 237, 240);
+}
+
 .rainbowText {
   background-image: linear-gradient(to left, var(--primary-color), var(--primary-color));
   -webkit-background-clip: text;
