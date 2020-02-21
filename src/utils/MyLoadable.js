@@ -1,8 +1,7 @@
 import React from 'react'
 import Loadable from '@loadable/component'
 import pMinDelay from 'p-min-delay'
-import { Spin } from 'antd'
-import '../App.css'
+import Loading from 'components/Loading'
 
 const DELAY = 150
 
@@ -40,16 +39,13 @@ function lazyHOC(Library, ...args) {
 
 export function LoadComponent(fnImport) {
   return Loadable(() => pMinDelay(fnImport(), DELAY), {
-    fallback: (
-      <div className="loading">
-        <Spin size="large" />
-        <p>Loading...</p>
-      </div>
-    ),
+    fallback: <Loading />,
   })
 }
 
 export function LoadHOC(fnImport) {
-  const Library = Loadable.lib(fnImport)
+  const Library = Loadable.lib(fnImport, {
+    // fallback: <Loading />,
+  })
   return (...args) => lazyHOC(Library, ...args)
 }

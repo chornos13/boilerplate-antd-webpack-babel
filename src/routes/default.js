@@ -1,32 +1,25 @@
 import CreateRoute from 'utils/CreateRoute'
 import { LoadHOC } from 'utils/MyLoadable'
-import home from './home'
-import features from './features'
-import rules from './rules'
-import about from './about'
+import web from 'routes/web'
+import admin from 'routes/admin'
 
-const withHeader = LoadHOC(() => import('components/HOC/Layout/withHeader'))
+const withHeader = LoadHOC(() => import('components/HOC/layouts/withHeader'))
+
+const withAdminNavigation = LoadHOC(() =>
+  import('components/HOC/layouts/withAdminNavigation'),
+)
 
 const routes = [
   {
-    path: '/home',
-    name: 'Home',
-    component: withHeader(CreateRoute(home)),
+    path: '/admin',
+    name: 'Admin',
+    component: withAdminNavigation(CreateRoute(admin, '/admin/home')),
   },
   {
-    path: '/features',
-    name: 'Feature',
-    component: withHeader(CreateRoute(features)),
-  },
-  {
-    path: '/rules',
-    name: 'Rules',
-    component: withHeader(CreateRoute(rules)),
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: withHeader(CreateRoute(about)),
+    path: '/',
+    name: 'Public',
+    isHomePage: true,
+    component: withHeader(CreateRoute(web, '/home')),
   },
 ]
 
