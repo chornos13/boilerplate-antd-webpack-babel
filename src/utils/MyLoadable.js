@@ -2,6 +2,7 @@ import React from 'react'
 import Loadable from '@loadable/component'
 import pMinDelay from 'p-min-delay'
 import Loading from 'components/Loading'
+import '../App.css'
 
 const DELAY = 150
 
@@ -44,8 +45,6 @@ export function LoadComponent(fnImport) {
 }
 
 export function LoadHOC(fnImport) {
-  const Library = Loadable.lib(fnImport, {
-    // fallback: <Loading />,
-  })
+  const Library = Loadable.lib(fnImport)
   return (...args) => lazyHOC(Library, ...args)
 }

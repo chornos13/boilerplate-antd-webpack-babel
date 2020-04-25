@@ -1,4 +1,4 @@
 module.exports = {
-  'primary-color': '#3F51B5',
+  'primary-color': '#E24949',
   orange: '#FF9901',
 }

@@ -18,6 +18,7 @@ class DefaultLayout extends React.Component {
             />
           )
         })}
+        <Redirect to={'/home'} />
       </Switch>
     )
   }

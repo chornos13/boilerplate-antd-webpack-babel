@@ -2,13 +2,14 @@ const path = require('path')
 const HWP = require('html-webpack-plugin')
 const CWP = require('copy-webpack-plugin')
 const webpack = require('webpack')
-const theme = require('./src/configs/theme')
+const theme = require('./src/styles/theme')
 
 module.exports = (env, argv) => {
   const isDevelopmentMode = argv.mode === 'development'
   return {
+    devtool: 'cheap-module-eval-source-map',
     devServer: {
-      port: 3100,
+      port: 2345,
       overlay: {
         errors: true,
         warnings: true,
@@ -82,7 +83,14 @@ module.exports = (env, argv) => {
             // Translates CSS into CommonJS
             'css-loader',
             // Compiles Sass to CSS
-            'sass-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                sassOptions: {
+                  includePaths: ['/src/'],
+                },
+              },
+            },
           ],
         },
         {
@@ -95,8 +103,8 @@ module.exports = (env, argv) => {
                 importLoaders: 1,
                 modules: isDevelopmentMode
                   ? {
-                      localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                    }
+                    localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                  }
                   : true,
               },
             },

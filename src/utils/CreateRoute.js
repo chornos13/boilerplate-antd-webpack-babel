@@ -1,17 +1,26 @@
 import React from 'react'
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import ReactRouterPropTypes from 'react-router-prop-types'
-
 import { LoadComponent } from 'utils/MyLoadable'
 
 const NotFound = LoadComponent(() => import('views/pages/404'))
+export const listRoute = []
+const breadcrumbNameMap = {}
 
-function CreateRoute(routes, redirectToIfNotMatch) {
+export function getBreadcrumbNameMap() {
+  return breadcrumbNameMap
+}
+
+function CreateRoute(routes, redirectToIfNoMatch) {
+  listRoute.push(...routes)
+  routes.map((item) => {
+    breadcrumbNameMap[item.path] = item.name
+    return breadcrumbNameMap
+  })
+
   function MyRouter(props) {
-    const { redirectTo: propRedirectTo } = props
-    const curRedirectTo = propRedirectTo || redirectToIfNotMatch
-    console.log({ curRedirectTo })
+    const { redirectTo } = props
+    const curRedirect = redirectTo || redirectToIfNoMatch
     return (
       <Switch>
         {routes.map((route) => {
@@ -26,9 +35,8 @@ function CreateRoute(routes, redirectToIfNotMatch) {
             />
           )
         })}
-
-        {curRedirectTo ? (
-          <Redirect to={curRedirectTo} />
+        {curRedirect ? (
+          <Redirect to={curRedirect} />
         ) : (
           <Route path="*">
             <NotFound />
@@ -40,10 +48,9 @@ function CreateRoute(routes, redirectToIfNotMatch) {
 
   MyRouter.propTypes = {
     redirectTo: PropTypes.string,
-    location: ReactRouterPropTypes.location.isRequired,
   }
 
-  return withRouter(MyRouter)
+  return MyRouter
 }
 
 export default CreateRoute

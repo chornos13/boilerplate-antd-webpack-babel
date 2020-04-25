@@ -1,4 +1,4 @@
-const { toString } = Object.prototype
+const toString = Object.prototype.toString
 
 /**
  * Gets the `toStringTag` of `value`.
@@ -120,7 +120,7 @@ function memoize(func, resolver) {
   }
   const memoized = function(...args) {
     const key = resolver ? resolver.apply(this, args) : args[0]
-    const { cache } = memoized
+    const cache = memoized.cache
 
     if (cache.has(key)) {
       return cache.get(key)

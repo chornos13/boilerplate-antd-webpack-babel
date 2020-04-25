@@ -1,6 +1,12 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "presets": ["@babel/preset-env", "@babel/preset-react", "react-app"],
   "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ],
     [
       "import",
       { "libraryName": "antd", "libraryDirectory": "es", "style": true }
@@ -14,6 +20,7 @@
       {
         "extensions": [".js", ".jsx", ".es", ".es6", ".mjs", ".scss"],
         "alias": {
+          "public": "./public",
           "components": "./src/components",
           "containers": "./src/containers",
           "stores": "./src/stores",
@@ -22,8 +29,13 @@
           "fields": "./src/fields",
           "utils": "./src/utils",
           "pages": "./src/pages",
+          "icons": "./src/icons",
           "views": "./src/views",
-          "constants": "./src/constants"
+          "constants": "./src/constants",
+          "validations": "./src/validations",
+          "proptypes": "./src/proptypes",
+          "services": "./src/services",
+          "helpers": "./src/helpers"
         }
       }
     ]

@@ -18,7 +18,6 @@ const routes = [
   {
     path: '/',
     name: 'Public',
-    isHomePage: true,
     component: withHeader(CreateRoute(web, '/home')),
   },
 ]
